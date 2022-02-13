@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<br />
+<div class="container-lg col-8 border rounded">
+    <div class="container col-11">
+        <br />
+        <h2>AddProduct</h2>
+        <form class="row g-3" action="/Product/AddProduct" method="Post">
+
+            <div class="col-12">
+                <label for="Name" class="form-label">Prodcut Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Product Name" />
+            </div>
+
+            <div class="col-12">
+                <label for="Price(৳)" class="form-label">Price</label>
+                <input type="number" class="form-control" name="Price" id="Price" placeholder="Price Of The Product" />
+            </div>
+
+            <div class="col-12">
+                <label for="Qty" class="form-label">Quantity</label>
+                <input type="number" class="form-control" name="Qty" id="Qty" placeholder="How Many Products Available In Stock" />
+            </div>
+
+            <div class="col-12">
+                <center><input type="submit" class="btn btn-lg btn-dark" value="Add Product" /></center>
+            </div><hr />
+        </form>
+    </div>
+</div>

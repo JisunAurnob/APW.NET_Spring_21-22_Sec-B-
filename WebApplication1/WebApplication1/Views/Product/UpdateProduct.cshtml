@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "UpdateProduct";
+}
+
+<br />
+<div class="container-lg col-8 border rounded">
+    <div class="container col-11">
+        <br />
+        <h2>Update Product</h2>
+        <form class="row g-3" action="/Product/UpdateProduct" method="Post">
+
+            <input type="hidden" class="form-control" name="PID" id="PID" value="@Model.PID" />
+            <div class="col-12">
+                <label for="Name" class="form-label">Prodcut Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" value="@Model.Name" />
+            </div>
+
+            <div class="col-12">
+                <label for="Price" class="form-label">Price</label>
+                <input type="number" class="form-control" name="Price" id="Price" value="@Model.Price" />
+            </div>
+
+            <div class="col-12">
+                <label for="Qty" class="form-label">Quantity</label>
+                <input type="number" class="form-control" name="Qty" id="Qty" value="@Model.Qty" />
+            </div>
+
+            <div class="col-12">
+                <center><input type="submit" class="btn btn-lg btn-dark" value="Update Product" /></center>
+            </div><hr />
+        </form>
+    </div>
+</div>

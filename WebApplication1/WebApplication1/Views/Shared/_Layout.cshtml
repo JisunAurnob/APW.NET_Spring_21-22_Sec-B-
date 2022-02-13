@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    @*<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">*@
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" @Html.ActionLink("Home", "Index", "Home")</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @Html.ActionLink("About", "About", "Home")</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @Html.ActionLink("Contact", "Contact", "Home")</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CV
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" @Html.ActionLink("CvHome", "Home", "Profile")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("Education", "Education", "Profile")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("MyProjects", "MyProjects", "Profile")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("References", "Reference", "Profile")</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" @Html.ActionLink("Add Product", "AddProduct", "Product")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("Product List", "Index", "Product")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("Cart", "AddProduct", "Product")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("My Orders", "AddProduct", "Product")</a></li>
+                        </ul>
+                    </li>
+                    @*<li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>*@
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Jisun
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" @Html.ActionLink("First Page", "FirstPage", "Jisun")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("Registration", "Registration", "Jisun")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("User List", "SubmitReg", "Jisun")</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @Html.ActionLink("Login", "Contact", "Home")</a>
+                    </li>
+                </ul>
+                @*<form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>*@
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MD. Jisun Abedin Aurnob</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model WebApplication1.Models.Database.user
+@{
+    ViewBag.Title = "EditUser";
+    string msg = "checked";
+}
+
+<h2>EditUser</h2>
+
+<br />
+<div class="container-lg col-8 border rounded">
+    <div class="container col-11">
+        <br />
+        <h2>Registration</h2>
+        <form class="row g-3" action="/Jisun/EditUser" method="Post">
+            <input type="hidden" name="UserID" value="@Model.UserID" />
+            <div class="col-md-6">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" value="@Model.Name" />
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                <label for="Username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="Username" id="Username" value="@Model.Username" />
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="col-12">
+                <label for="Email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="Email" id="Email" value="@Model.Email" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" name="Phone" id="Phone" value="@Model.Phone" />
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="Password" id="Password" value="@Model.Password" />
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-7">
+                <label for="Dob" class="form-label">Date Of Birth</label>
+                <input type="date" class="form-control" name="Dob" id="Dob" value="@Model.Dob" />
+                @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-5">
+                <label for="Gender" class="form-label">Gender</label><br />
+                <input type="radio" class="form-check-input" id="Male" name="Gender" value="Male" @if (@Model.Gender == "Male") { @msg } />
+
+                <label for="Male">Male</label>&nbsp &nbsp
+                <input type="radio" class="form-check-input" id="Female" name="Gender" value="Female" @if (@Model.Gender == "Female") { @msg } />
+                <label for="Female">Female</label>&nbsp &nbsp
+                <input type="radio" class="form-check-input" id="Other" name="Gender" value="Other" @if (@Model.Gender == "Other") { @msg } />
+                <label for="Other">Other</label> &nbsp;<br />
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <center><input type="submit" class="btn btn-lg btn-dark" value="Update" /></center>
+            </div><hr />
+        </form>
+    </div>
+</div>

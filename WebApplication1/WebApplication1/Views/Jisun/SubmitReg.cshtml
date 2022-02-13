@@ -1,0 +1,47 @@
+﻿@model List<WebApplication1.Models.Database.user>
+@{
+    ViewBag.Title = "SubmitReg";
+}
+<div class="container">
+    <h2>User Lists</h2>
+
+    @*<h4>Name: @Model.Name</h4>
+        <h4>Username: @Model.Username</h4>
+        <h4>Email: @Model.Email</h4>
+        <h4>Phone: @Model.Phone</h4>
+        <h4>Date Of Birth: @Model.Dob</h4>*@
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>UserID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date Of Birth</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserID</td>
+                <td>@item.Name</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Dob</td>
+                <td>@item.Gender</td>
+                <td>
+                    <a href="/Jisun/EditUser/@item.UserID"><img src="https://img.icons8.com/material-rounded/24/000000/edit--v1.png" /></a>&nbsp;
+                    <a href="/Jisun/EditUser/@item.UserID"><img src="https://img.icons8.com/material-outlined/24/000000/filled-trash.png" /></a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+    </div>
