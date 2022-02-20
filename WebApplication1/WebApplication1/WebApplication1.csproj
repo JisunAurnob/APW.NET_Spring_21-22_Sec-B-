@@ -136,6 +136,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartView.cs" />
+    <Compile Include="Models\Database\Cart.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\jisun.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -154,6 +158,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\MyOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -161,7 +168,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Registration.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Producaat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -265,7 +272,7 @@
     <Content Include="Views\Jisun\EditUser.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Product\UpdateProduct.cshtml" />
-    <Content Include="Views\Product\AddToCart.cshtml" />
+    <Content Include="Views\Product\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

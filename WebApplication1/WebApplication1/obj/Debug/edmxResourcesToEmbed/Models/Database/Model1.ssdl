@@ -1,11 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="testDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="PID" Type="bigint" />
+  </EntityType>
   <EntityType Name="jisun">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="bigint" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MyOrders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotalPrice" Type="int" />
+    <Property Name="CartID" Type="bigint" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -29,9 +45,43 @@
     <Property Name="Dob" Type="varchar" MaxLength="15" />
     <Property Name="Gender" Type="varchar" MaxLength="7" />
   </EntityType>
+  <Association Name="FK_Cart_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MyOrders_Cart">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="MyOrders" Type="Self.MyOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartID" />
+      </Principal>
+      <Dependent Role="MyOrders">
+        <PropertyRef Name="CartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="testDBModelStoreContainer">
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="jisun" EntityType="Self.jisun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MyOrders" EntityType="Self.MyOrders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cart_Products" Association="Self.FK_Cart_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MyOrders_Cart" Association="Self.FK_MyOrders_Cart">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="MyOrders" EntitySet="MyOrders" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

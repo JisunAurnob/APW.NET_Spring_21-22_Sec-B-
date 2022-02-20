@@ -8,7 +8,11 @@
         <EntityTypeShape EntityType="testDBModel.jisun" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testDBModel.user" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testDBModel.Product" Width="1.5" PointX="4.875" PointY="0.625" />
-      </Diagram>
+        <EntityTypeShape EntityType="testDBModel.Cart" Width="1.5" PointX="8" PointY="0.625" />
+        <EntityTypeShape EntityType="testDBModel.MyOrder" Width="1.5" PointX="8" PointY="3.625" />
+        <AssociationConnector Association="testDBModel.FK_Cart_Products" />
+        <AssociationConnector Association="testDBModel.FK_MyOrders_Cart" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -24,6 +24,16 @@
     <EntitySet Name="jisuns" EntityType="Self.jisun" />
     <EntitySet Name="users" EntityType="Self.user" />
     <EntitySet Name="Products" EntityType="testDBModel.Product" />
+    <EntitySet Name="Carts" EntityType="testDBModel.Cart" />
+    <EntitySet Name="MyOrders" EntityType="testDBModel.MyOrder" />
+    <AssociationSet Name="FK_Cart_Products" Association="testDBModel.FK_Cart_Products">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MyOrders_Cart" Association="testDBModel.FK_MyOrders_Cart">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="MyOrder" EntitySet="MyOrders" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Product">
     <Key>
@@ -33,5 +43,49 @@
     <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Qty" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carts" Relationship="testDBModel.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
   </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="PID" Type="Int64" />
+    <NavigationProperty Name="Product" Relationship="testDBModel.FK_Cart_Products" FromRole="Cart" ToRole="Product" />
+    <NavigationProperty Name="MyOrders" Relationship="testDBModel.FK_MyOrders_Cart" FromRole="Cart" ToRole="MyOrder" />
+  </EntityType>
+  <EntityType Name="MyOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalPrice" Type="Int32" />
+    <Property Name="CartID" Type="Int64" />
+    <NavigationProperty Name="Cart" Relationship="testDBModel.FK_MyOrders_Cart" FromRole="MyOrder" ToRole="Cart" />
+  </EntityType>
+  <Association Name="FK_Cart_Products">
+    <End Type="testDBModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="testDBModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MyOrders_Cart">
+    <End Type="testDBModel.Cart" Role="Cart" Multiplicity="0..1" />
+    <End Type="testDBModel.MyOrder" Role="MyOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartID" />
+      </Principal>
+      <Dependent Role="MyOrder">
+        <PropertyRef Name="CartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

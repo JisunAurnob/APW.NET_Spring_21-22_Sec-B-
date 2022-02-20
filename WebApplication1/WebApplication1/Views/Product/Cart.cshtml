@@ -1,0 +1,40 @@
+﻿@*@model List<WebApplication1.Models.Database.Cart>*@
+@{
+    ViewBag.Title = "Cart";
+}
+
+<div class="container">
+    <h2>Cart</h2>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th><center>Cart ID</center></th>
+                <th><center>Product Name</center></th>
+                <th><center>Price(৳)</center></th>
+                <th><center>Quantity</center></th>
+                <th><center>Total Price(৳)</center></th>
+                <th><center>Action</center></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CID</td>
+                    <td>@item.Pname</td>
+                    <td>@item.Pprice ৳</td>
+                    <td>@item.Cqty</td>
+                    <td>@item.CTotalPrice ৳</td>
+                    <td>
+                        <a href="/Product/DeleteCart/@item.CID"><img src="https://img.icons8.com/material-outlined/24/000000/filled-trash.png" /></a>&nbsp;&nbsp;
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <center><a class="btn btn-lg btn-dark" href="/Product/DeleteProduct/">Checkout</a></center>
+</div>

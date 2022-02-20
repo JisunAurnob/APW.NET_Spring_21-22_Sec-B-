@@ -12,20 +12,20 @@ namespace WebApplication1.Models.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Cart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Cart()
         {
-            this.Carts = new HashSet<Cart>();
+            this.MyOrders = new HashSet<MyOrder>();
         }
     
-        public long PID { get; set; }
-        public string Name { get; set; }
-        public string Price { get; set; }
-        public string Qty { get; set; }
+        public long CartID { get; set; }
+        public Nullable<int> Qty { get; set; }
+        public Nullable<long> PID { get; set; }
     
+        public virtual Product Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<MyOrder> MyOrders { get; set; }
     }
 }

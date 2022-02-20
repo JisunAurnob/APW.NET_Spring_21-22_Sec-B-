@@ -28,5 +28,7 @@ namespace WebApplication1.Models.Database
         public virtual DbSet<jisun> jisuns { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<MyOrder> MyOrders { get; set; }
     }
 }
