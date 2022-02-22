@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebApplication1.Models;
 using WebApplication1.Models.Database;
 
@@ -69,6 +70,52 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("SubmitReg");
             }
             return View(u);
+        }
+        [HttpGet]
+        public ActionResult Login()
+        { 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(UserModel user)
+        {
+            ViewBag.Message = "";
+            if (ModelState.IsValid)
+            {
+                testDBEntities db = new testDBEntities();
+                var data = (from u in db.users
+                          where u.Username.Equals(user.Username) &&
+                          u.Password.Equals(user.Password)
+                          select u).FirstOrDefault();
+                if (data != null)
+                {
+                    FormsAuthentication.SetAuthCookie(data.Username, false);
+                    Session["Username"] = data.Username;
+                    return RedirectToAction("Dashboard");
+                }
+                else
+                {
+                    ViewBag.Message = "Your Username Or Password May Be Incorrect";
+                }
+            }
+
+            return View();
+        }
+        [Authorize]
+        //[AllowAnonymous]
+        public ActionResult Dashboard() 
+        {
+            //if (Session["Username"]==null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
+            return View();
+        }
+        public ActionResult Logout()
+        {
+
+            FormsAuthentication.SignOut();
+            return View("FirstPage");
         }
     }
 }

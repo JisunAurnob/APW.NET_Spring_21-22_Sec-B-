@@ -62,13 +62,17 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" @Html.ActionLink("First Page", "FirstPage", "Jisun")</a></li>
                             <li><a class="dropdown-item" @Html.ActionLink("Registration", "Registration", "Jisun")</a></li>
+                            <li><a class="dropdown-item" @Html.ActionLink("Dashboard", "Dashboard", "Jisun")</a></li>
                             <li><a class="dropdown-item" @Html.ActionLink("User List", "SubmitReg", "Jisun")</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @Html.ActionLink("Login", "Contact", "Home")</a>
+                        <a class="nav-link" @Html.ActionLink("Login", "Login", "Jisun")</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @Html.ActionLink("Logout", "Logout", "Jisun")</a>
                     </li>
                 </ul>
                 @*<form class="d-flex">

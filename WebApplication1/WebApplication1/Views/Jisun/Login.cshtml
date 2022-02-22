@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.UserModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<br />
+<div class="container-lg col-8 border rounded">
+    <div class="container col-11">
+        <br />
+        <h2>Login</h2>
+        <center><label class="text-danger">@ViewBag.Message</label></center>
+        <form class="row g-3" action="/Jisun/Login" method="Post">
+
+            <div class="col-12">
+                <label for="Username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="Username" id="Username" placeholder="Your Username" />
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="Password" id="Password" placeholder="Your Password" />
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <center><input type="submit" class="btn btn-lg btn-dark" value="Login" /></center>
+            </div><hr />
+        </form>
+    </div>
+</div>
